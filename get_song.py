@@ -3,6 +3,7 @@ from tkinter import filedialog
 import json
 from pathlib import Path
 import os
+from ytmusicapi import YTMusic
 
 def get_song_from_downloads():
     root = tk.Tk()
@@ -46,3 +47,6 @@ def get_song_from_downloads():
         print(f"Already in list: {song}")
 
     return song
+
+def get_song(): # this is for songs not downloaded
+    print("not working")
