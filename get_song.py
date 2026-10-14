@@ -3,7 +3,6 @@ from tkinter import filedialog
 import json
 from pathlib import Path
 import os
-from ytmusicapi import YTMusic
 
 def get_song_from_downloads():
     root = tk.Tk()
