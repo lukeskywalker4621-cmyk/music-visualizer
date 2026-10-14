@@ -1,0 +1,8 @@
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+pygame = "2.6.1"
+numpy = "2.5.4"
+librosa = "1.0.0"
+ytmusicapi = "1.12.3"
+yt-dlp = "2026.8.19"
+python-vlc = "3.0.21203"
