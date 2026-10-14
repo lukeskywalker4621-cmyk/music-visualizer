@@ -1,12 +1,16 @@
 import tkinter as tk
 from tkinter import filedialog
 import json
+from pathlib import Path
+import os
 
-def get_song():
+def get_song_from_downloads():
     root = tk.Tk()
     root.withdraw()
+    root.attributes('-topmost', True)
 
     song = filedialog.askopenfilename(
+        initialdir=str(Path.home() / "Downloads"),
         title="Pick a song",
         filetypes=[
             ("Sound files", "*.mp3 *.wav"),
@@ -21,11 +25,15 @@ def get_song():
 
     try:
         with open("songs.json", "r") as json_file:
-            songs = json.load(json_file)
+            content = json_file.read().strip()  # Read as text first
+            if content:  # Only parse if not empty
+                songs = json.loads(content)
+            else:
+                songs = []  # Empty file = empty list
     except FileNotFoundError:
         songs = []
     except json.JSONDecodeError:
-        print("songs.json is not valid JSON")
+        print("songs.json is corrupted. Starting fresh.")
         songs = []
 
     # Check if song is already in the list
